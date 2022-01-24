@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1 class="my-3 text-center">Lista de cursos</h1>
+    <h1 class="display-1 mb-5 mt-5">Lista de cursos</h1>
     <v-row>
       <v-col
         cols="4"
