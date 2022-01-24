@@ -2,21 +2,21 @@
   <div>
     <v-card>
       <v-card-title>
-        <span class="text-h5"
-          >Editar Curso {{ cursoSeleccionadoESP.data.Curso }}</span
-        >
+        <h1 class="display-1 mb-5 mt-5 mx-auto">
+          Editar Curso {{ cursoSeleccionadoESP.data.Curso }}
+        </h1>
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-form ref="editForm" @submit.prevent="editCourse">
+          <v-form ref="editForm" @submit.prevent="actualizarFormulario">
             <v-row>
-              <v-col cols="12" md="3">
+              <v-col cols="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Codigo"
                   label="Código"
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" md="9">
+              <v-col cols="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Curso"
                   label="Nombre"
@@ -28,39 +28,33 @@
                   label="Descripción"
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Costo"
                   type="number"
-                  min="0"
-                  max="1000000"
-                  step="10000"
                   label="Costo"
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Cupos"
                   type="number"
-                  min="0"
                   label="Cupos"
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Inscritos"
                   type="number"
-                  min="0"
                   label="Inscritos"
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="12" md="12">
                 <v-menu max-width="290">
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       :value="cursoSeleccionadoESP.data.Fecha"
                       label="Fecha"
-                      prepend-icon="mdi-calendar-range"
                       v-on="on"
                     ></v-text-field>
                   </template>
@@ -69,17 +63,11 @@
                   ></v-date-picker>
                 </v-menu>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="12" md="12">
                 <v-text-field
                   v-model="cursoSeleccionadoESP.data.Duracion"
                   label="Duración"
                 ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-switch
-                  v-model="cursoSeleccionadoESP.data.Terminado"
-                  label="Terminado"
-                ></v-switch>
               </v-col>
               <v-col cols="12">
                 <v-text-field
@@ -87,6 +75,12 @@
                   label="URL Foto principal"
                   hint="Pega la URL de la Foton"
                 ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="12" md="12">
+                <v-switch
+                  v-model="cursoSeleccionadoESP.data.Terminado"
+                  label="Terminado"
+                ></v-switch>
               </v-col>
             </v-row>
             <v-card-actions class="mt-5 d-flex flex-row-reverse">
@@ -103,7 +97,6 @@
             </v-card-actions>
           </v-form>
         </v-container>
-        <p class="text-end mr-5">*Todos los campos son requeridos</p>
       </v-card-text>
     </v-card>
   </div>
@@ -130,7 +123,7 @@ export default {
     };
   },
   methods: {
-    upadateCourse() {
+    actualizarCurso() {
       let cursos = {
         index: this.id,
         course: {
@@ -147,13 +140,12 @@ export default {
         },
       };
 
-      this.$store.commit("upadateCourse", cursos);
+      this.$store.commit("actualizarCurso", cursos);
       alert("Opinion actualizada");
     },
-    editCourse() {
-      // this.upadateCourse();
+    actualizarFormulario() {
       actualizarData(this.id, this.cursoSeleccionadoESP.cursos);
-      this.$router.push("/admin");
+      this.$router.push("/Admin");
     },
   },
   created() {},
@@ -170,3 +162,9 @@ export default {
   },
 };
 </script>
+
+<style>
+div.v-card__text {
+  background-color: white;
+}
+</style>

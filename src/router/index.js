@@ -31,6 +31,7 @@ const routes = [
     path: "/Admin/:id",
     name: "Editar",
     component: EditarCurso,
+    props: true,
   },
   {
     path: "/Cursos",

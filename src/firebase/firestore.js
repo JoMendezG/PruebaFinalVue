@@ -77,7 +77,7 @@ const borrarDatos = async (id) => {
 // Actualizar datos
 const actualizarData = async (id, data) => {
   try {
-    console.log("DATA", id, data);
+    console.log("data", id, data);
     await setDoc(doc(db, col, id), data);
     alert("Datos actualizados");
 
